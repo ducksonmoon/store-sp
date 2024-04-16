@@ -14,9 +14,10 @@ const Home: React.FC = () => {
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    fetchProducts({ page: 1 })
-      .then((data) => setProducts(data.products))
-      .catch((error) => console.error("Failed to fetch products:", error));
+    fetchProducts({ page: 1 }).then((data) => {
+      setProducts(data.products);
+      setTotalPages(Math.ceil(data.total / 10));
+    });
   }, [category, currentPage, searchQuery]);
 
   const handleCategorySelect = (newCategory: string) => {
