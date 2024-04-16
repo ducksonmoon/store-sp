@@ -14,7 +14,7 @@ const Home: React.FC = () => {
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    fetchProducts({ page: 1 }).then((data) => {
+    fetchProducts({ page: currentPage }).then((data) => {
       setProducts(data.products);
       setTotalPages(Math.ceil(data.total / 10));
     });
